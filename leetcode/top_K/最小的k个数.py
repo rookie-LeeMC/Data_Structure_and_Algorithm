@@ -22,22 +22,31 @@ Max-heap: 父节点的值大于或等于子节点的值；
 
 '''
 
+import heapq
+
 
 def getLeastNumbers(arr, k):
     arr = sorted(arr, key=lambda x: x)
     return arr[:k]
 
+
 # python的堆为最小堆
-import heapq
-def getLeastNumbers_v2(arr, k):
-    # 特殊
-    if not arr: return []
+def smallestK(arr, k):
+    if not arr or k == 0: return []
 
-    heap=[]
+    import heapq
+    # 最小堆用于求最大的k个数，每个元素乘以-1，将求最小k个数，转变成求最大k个数
+    heap = [-1 * i for i in arr[0:k]]
+    heapq.heapify(heap)
+
+    for i in range(k, len(arr)):
+        if -1 * arr[i] > heap[0]:
+            heapq.heappop(heap)
+            heapq.heappush(heap, -1 * arr[i])
+
+    return [-1 * i for i in heap]
 
 
-
-
-arr = [3, 2, 1]
-k = 2
-getLeastNumbers(arr, k)
+arr = [1,3,5,7,2,4,6,8]
+k = 4
+print(smallestK(arr,k))
