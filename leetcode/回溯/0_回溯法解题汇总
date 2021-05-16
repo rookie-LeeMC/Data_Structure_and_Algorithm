@@ -1,0 +1,15 @@
+一、解题思路
+https://leetcode-cn.com/problems/generate-parentheses/solution/sha-gua-hui-su-mo-ban-by-chou-xiang-bai-js51i/
+
+def backtrack(新区域, res, path):
+    if 结束:# 一般是最小值最大值
+        res.add(path) #
+        return
+    for 选择 in 新区域:
+        if 符合要求:
+            path.add(当前选择)
+            backtrack(新区域, res, path)
+            path.pop()
+
+二、回溯算法入门级详解 + 练习
+https://leetcode-cn.com/problems/permutations/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liweiw/
