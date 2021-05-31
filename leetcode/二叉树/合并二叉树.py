@@ -28,8 +28,23 @@ class Solution:
         if t2 is None:
             return t1
 
-        root = TreeNode(t1.val+t2.val)
-        root.left = self.mergeTrees(t1.left,t2.left)
-        root.right = self.mergeTrees(t1.right,t2.right)
+        root = TreeNode(t1.val + t2.val)
+        root.left = self.mergeTrees(t1.left, t2.left)
+        root.right = self.mergeTrees(t1.right, t2.right)
+
+        return root
+
+
+class Solution_v1:
+    def mergeTrees(self, t1, t2):
+        # 递归结束条件
+        if not t1:
+            return t2
+        if not t2:
+            return t1
+
+        root = TreeNode(t1.val + t2.val)
+        root.left = self.mergeTrees(t1.left, t2.left)
+        root.right = self.mergeTrees(t1.right, t2.right)
 
         return root
