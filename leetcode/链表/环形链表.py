@@ -31,3 +31,33 @@ class Solution:
                 head_dic[head] = 1
 
         return False
+
+
+def detectCycle_dic(head):
+    if not head or not head.next: return False
+    if head.next == head: return True
+
+    node_dic = {}
+    while head:
+        if head in node_dic.keys():
+            return True
+        else:
+            node_dic[head] = 1
+            head = head.next
+
+    return False
+
+
+def detectCycle_cyc(head):
+    if not head or not head.next: return False
+    if head.next == head: return True
+
+    slow = head
+    fast = head.next
+
+    while slow != fast:
+        if not fast or not fast.next: return False
+        slow = slow.next
+        fast = fast.next.next
+
+    return True

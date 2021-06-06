@@ -54,3 +54,41 @@ class Solution:
             head = tmp
 
         return new_head
+
+    def reverseList_2(self, head: ListNode) -> ListNode:
+        if not head or not head.next: return head
+
+        pre=None
+        cur=head
+
+        while cur:
+            # 保存cur的next
+            tmp=cur.next
+
+            cur.next=pre
+            pre=cur
+
+            cur=tmp
+
+        return pre
+
+    def reverseList_3(self, head: ListNode) -> ListNode:
+        if not head or not head.next:return head
+
+        pre=None
+        cur=head
+        aft=head.next
+
+        while cur:
+            cur.next=pre
+            pre=cur
+            cur=aft
+            aft=aft.next
+
+        return pre
+
+
+
+
+
+
