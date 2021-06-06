@@ -45,7 +45,3 @@ N = 2
 # dp = [[0] * (N + 1) for _ in range(M + 1)]
 # for i in range(3):
 #     print id(dp[i])
-
-a = [0] * 9
-for i in range(9):
-    print id(a[i])

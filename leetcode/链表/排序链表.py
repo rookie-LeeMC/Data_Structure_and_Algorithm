@@ -59,3 +59,80 @@ class Solution:
         return res.next
 
 
+def sortList(head):
+    if not head or not head.next: return head
+
+    # 分割环节
+    # 快慢指针法：奇数个节点找到中点，偶数个节点找到中心左边的节点
+    slow = head
+    fast = head.next
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+    # 切断链表
+    mid = slow.next
+    slow.next = None
+
+    # 分左边
+    left = sortList(head)
+    # 分右边
+    right = sortList(mid)
+
+    # 治理合并
+    h = res = ListNode(-1)
+    while left and right:
+        if left.val > right.val:
+            h.next = right
+            right = right.next
+            h = h.next
+        else:
+            h.next = left
+            left = left.next
+            h = h.next
+
+    if left:
+        h.next = left
+    elif right:
+        h.next = right
+
+    return res.next
+
+
+def sortList_v1(head):
+    if not head or not head.next: return head
+
+    # 快慢指针法分割链表
+    slow = head
+    fast = head.next
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+    # 切断链表
+    mid = slow.next
+    slow.next = None
+
+    # 分左边
+    left = sortList_v1(head)
+    # 分右边
+    right = sortList_v1(mid)
+
+    # 治理合并
+    h = ans = ListNode(-1)
+    while left and right:
+        if left.val <= right.val:
+            h.next = left
+            h = h.next
+            left = left.next
+        elif left.val > right.val:
+            h.next = right
+            h = h.next
+            right = right.next
+
+    if left:
+        h.next = left
+    elif right:
+        h.next = right
+
+    return ans.next

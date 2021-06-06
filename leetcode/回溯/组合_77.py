@@ -28,6 +28,31 @@ def combine(n, k):
     return ans
 
 
+def combine_v1(n, k):
+    if n == 0 or k == 0: return []
+
+    nums = [i + 1 for i in range(n)]
+    comb = []
+    ans = []
+
+    def trackback(nums, start):
+        # 递归终止条件
+        if len(comb) == k:
+            ans.append(comb[:])
+            return
+
+            # 回溯
+        for i in range(start, len(nums)):
+            comb.append(nums[i])
+            trackback(nums, i + 1)
+            comb.pop()
+
+    trackback(nums, 0)
+
+    return ans
+
+
 n = 4
 k = 2
 print(combine(n, k))
+print(combine_v1(n, k))

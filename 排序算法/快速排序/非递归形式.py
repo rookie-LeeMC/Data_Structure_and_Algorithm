@@ -50,7 +50,7 @@ def quick_sort(nums):
                 stack.push((start, mid - 1))
 
             # 保证mid右侧数量大于一个，这样才有排序的必要
-            if end > mid + 2:
+            if end > mid + 1:
                 stack.push((mid + 1, end))
 
 

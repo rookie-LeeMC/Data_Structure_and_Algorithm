@@ -25,22 +25,23 @@
 
 '''
 
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
 
+
 class Solution:
     def levelOrder(self, root: TreeNode):
         if root == None: return []
 
-        res=[]
+        res = []
         ans = []
         res.append(root.val)
 
-
-        while len(res)!=0:
+        while len(res) != 0:
             node = res.pop(0)
             if node.left != None: res.append(node.left)
             if node.right != None: res.append(node.right)
@@ -48,7 +49,3 @@ class Solution:
             ans.append(node.val)
 
         return ans
-
-
-
-

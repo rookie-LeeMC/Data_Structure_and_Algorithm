@@ -1,10 +1,7 @@
 # -*- coding:UTF-8 -*-
 '''
-https://zhuanlan.zhihu.com/p/105624690
-'''
-
-'''
-归并：有2个有序表，合并成一个有序表的过程
+归并：https://blog.csdn.net/qq_17621363/article/details/104312352
+先分，后治，核心函数为合并两个有序数组
 '''
 
 
@@ -76,4 +73,43 @@ def merge(li, low, mid, high):
 a = [2, 4, 5, 1, 3]
 print(a)
 merge_sort(a, 0, len(a) - 1)
+print(a)
+
+
+def merge_sort_v1(li, low, high):
+    if low < high:
+        mid = (low + high) // 2
+
+        # 分左边
+        merge_sort(li, low, mid)
+        # 分右边
+        merge_sort(li, mid + 1, high)
+        # 治理合并左边和右边
+        merge_v1(li, low, mid, high)
+
+
+def merge_v1(li, low, mid, high):
+    i, j = low, mid + 1
+    tmp = []
+    while i <= mid and j <= high:
+        if li[i] > li[j]:
+            tmp.append(li[j])
+            j += 1
+        elif li[i] <= li[j]:
+            tmp.append(li[i])
+            i += 1
+
+    while i <= mid:
+        tmp.append(li[i])
+        i += 1
+    while j <= high:
+        tmp.append(li[j])
+        j += 1
+
+    li[low:high + 1] = tmp
+
+
+a = [2, 4, 5, 1, 3]
+print(a)
+merge_sort_v1(a, 0, len(a) - 1)
 print(a)

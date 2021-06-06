@@ -125,7 +125,7 @@ def permute(nums):
     ans = []
     track = []
 
-    def trackback(nums,track):
+    def trackback(nums, track):
         # 结束条件
         if len(track) == len(nums):
             ans.append(track[:])
@@ -135,11 +135,13 @@ def permute(nums):
         for i in nums:
             if i in track: continue
             track.append(i)
-            trackback(nums,track)
+            trackback(nums, track)
             track.pop()
 
-    trackback(nums,track)
+    trackback(nums, track)
 
     return ans
+
+
 nums = [1, 1, 2]
 print(permute(nums))
