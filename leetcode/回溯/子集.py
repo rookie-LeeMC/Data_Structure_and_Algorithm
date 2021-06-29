@@ -42,7 +42,7 @@ class Solution:
 
             # 在选择列表里回溯
             for i in range(select_idx, len(nums)):
-                if nums[i] in track: continue
+                # if nums[i] in track: continue
 
                 track.append(nums[i])
                 backtrack(i + 1, track)
@@ -56,3 +56,28 @@ class Solution:
 s = Solution()
 # print(s.subsets([1, 2, 3, 4, 5, 6, 7, 8, 10, 0]))
 print(s.subsets([1, 2, 3]))
+
+
+def subsets(nums):
+    if not nums: return []
+    ans, track = [], []
+
+    def trackback(nums, start):
+        '''
+        :param nums: 探索数组
+        :param start: 探索区域
+        '''
+        ans.append(track[:])
+        if len(track) == len(nums): return
+
+        for i in range(start, len(nums)):
+            track.append(nums[i])
+            trackback(nums, i + 1)
+            track.pop()
+
+    trackback(nums, 0)
+
+    return ans
+
+
+print(subsets([1, 2, 3]))

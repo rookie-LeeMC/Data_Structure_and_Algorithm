@@ -29,6 +29,9 @@ candidates 中的数字可以无限制重复被选取。
   [2,3,3],
   [3,5]
 ]
+
+解题链接
+https://leetcode-cn.com/problems/combination-sum/solution/zu-he-zong-he-by-leetcode-solution/
 '''
 
 

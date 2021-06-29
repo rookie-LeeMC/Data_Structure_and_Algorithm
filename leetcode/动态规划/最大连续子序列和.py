@@ -20,22 +20,25 @@ def getMaxSum(nums):
         if dp[i - 1] >= 0:
             dp[i] = dp[i - 1] + nums[i]
 
-    print dp
-
     return max(dp)
 
-nums = [-2,1,-3,4,-1,2,1,-5,4]
-print getMaxSum(nums)
+
+nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+print
+getMaxSum(nums)
 
 nums = [1]
-print getMaxSum(nums)
+print
+getMaxSum(nums)
 
 nums = [0]
-print getMaxSum(nums)
+print
+getMaxSum(nums)
 
 nums = [-1]
-print getMaxSum(nums)
+print
+getMaxSum(nums)
 
 nums = [-100000]
-print getMaxSum(nums)
-
+print
+getMaxSum(nums)

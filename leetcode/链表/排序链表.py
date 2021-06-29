@@ -136,3 +136,41 @@ def sortList_v1(head):
         h.next = right
 
     return ans.next
+
+
+def sortList_20210612(head):
+    if not head or not head.next: return head
+
+    # 快慢指针法，找到中间节点
+    slow = head
+    fast = head.next
+    while fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+    # 断开链表
+    mid = slow.next
+    slow.next = None
+
+    # 分左、右 划分
+    left = sortList_20210612(head)
+    right = sortList_20210612(mid)
+
+    # 治理合并、有序链表合并
+    h = ans = ListNode(-1)
+    while left and right:
+        if left.val <= right.val:
+            h.next = left
+            h = h.next
+            left = left.next
+        else:
+            h.next = right
+            h = h.next
+            right = right.next
+
+    if left:
+        h.next = left
+    elif right:
+        h.next = right
+
+    return ans.next

@@ -2,6 +2,8 @@
 '''
 https://leetcode-cn.com/problems/maximum-sum-circular-subarray/solution/liang-ci-kadanesuan-fa-qiu-jie-by-user7648/
 '''
+
+
 def maxSubarraySumCircular(A):
     if len(A) < 2: return sum(A)
 

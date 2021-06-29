@@ -22,8 +22,6 @@ Max-heap: 父节点的值大于或等于子节点的值；
 
 '''
 
-import heapq
-
 
 def getLeastNumbers(arr, k):
     arr = sorted(arr, key=lambda x: x)
@@ -47,6 +45,40 @@ def smallestK(arr, k):
     return [-1 * i for i in heap]
 
 
-arr = [1,3,5,7,2,4,6,8]
+def smallestK_20210618(arr, k):
+    if not arr: return arr
+
+    # python为最小堆，记录最大的top-K
+    import heapq
+    heap = [-i for i in arr[0:k]]
+    heapq.heapify(heap)
+
+    for i in arr[k:]:
+        if -i > heap[0]:
+            heapq.heappop(heap)
+            heapq.heappush(heap, -i)
+
+    return [-1 * i for i in heap]
+
+
+def smallestK_20210618_v2(arr, k):
+    if not arr or k == 0: return []
+
+    import heapq
+    heap = []
+    for i in arr:
+        if len(heap) < k:
+            heapq.heappush(heap, -i)
+        elif len(heap) == k:
+            if -i > heap[0]:
+                heapq.heappop(heap)
+                heapq.heappush(heap, -i)
+
+    return [-i for i in heap]
+
+
+arr = [1, 3, 5, 7, 2, 4, 6, 8]
 k = 4
-print(smallestK(arr,k))
+print(smallestK(arr, k))
+print(smallestK_20210618(arr, k))
+print(smallestK_20210618_v2(arr, k))

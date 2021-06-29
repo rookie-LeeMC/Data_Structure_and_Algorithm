@@ -1,0 +1,24 @@
+# -*- coding:UTF-8 -*-
+'''
+https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/solution/er-cha-shu-zhong-de-zui-da-lu-jing-he-by-leetcode-/
+'''
+
+
+class Solution:
+    def pathSum(self, root, target):
+        ret = list()
+        path = list()
+
+        def dfs(root, target):
+            if not root:
+                return
+            path.append(root.val)
+            target -= root.val
+            if not root.left and not root.right and target == 0:
+                ret.append(path[:])
+            dfs(root.left, target)
+            dfs(root.right, target)
+            path.pop()
+
+        dfs(root, target)
+        return ret

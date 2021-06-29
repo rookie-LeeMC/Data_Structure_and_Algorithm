@@ -1,0 +1,13 @@
+0-1 背包问题
+　　第 416 题：分割等和子集；
+　　第 474 题：一和零；
+　　第 494 题：目标和。
+
+　　 组合总和IV
+
+完全背包问题如下：
+　　第 322 题：零钱兑换；
+　　第 518 题：零钱兑换 II。
+
+一篇文章吃透背包问题！（细致引入+解题模板+例题分析+代码呈现）
+https://leetcode-cn.com/problems/partition-equal-subset-sum/solution/yi-pian-wen-zhang-chi-tou-bei-bao-wen-ti-a7dd/

@@ -58,6 +58,25 @@ def swapPairs2(head):
     return dummy.next
 
 
+def swapPairs_20210613(head):
+    if not head or not head.next: return head
+    dummy = ListNode(-1)
+    dummy.next = head
+    temp = dummy
+
+    while temp.next and temp.next.next:
+        node1 = temp.next
+        node2 = temp.next.next
+
+        temp.next = node2
+        node1.next = node2.next
+        node2.next = node1
+
+        temp = node1
+
+    return dummy.next
+
+
 tmp = ListNode(1)
 head = tmp
 

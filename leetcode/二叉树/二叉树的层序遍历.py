@@ -83,3 +83,29 @@ def level_order_list(root):
         ans.append(tmp)
 
     return ans
+
+
+def level_order_v2(root):
+    if not root: return []
+    if not root.left and not root.right: return [[root.val]]
+
+    ans = []
+    stack = []
+    stack.append(root)
+
+    while stack:
+        n = len(stack)
+        tmp = []
+
+        for i in range(n):
+            node = stack.pop(0)
+            tmp.append(node.val)
+
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+
+        ans.append(tmp)
+
+    return ans

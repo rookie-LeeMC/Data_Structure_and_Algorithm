@@ -52,5 +52,6 @@ def lengthOfLIS_v2(nums):
 
 
 nums = [10, 9, 2, 5, 3, 7, 101, 18]
-print lengthOfLIS_v2(nums)
-print lengthOfLIS_v2([7, 7, 7, 7, 7, 7, 7])
+print(lengthOfLIS(nums))
+print(lengthOfLIS_v2(nums))
+print(lengthOfLIS_v2([7, 7, 7, 7, 7, 7, 7]))
