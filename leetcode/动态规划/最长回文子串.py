@@ -1,4 +1,4 @@
-# -*- coding:UTF-8 -*-
+ # -*- coding:UTF-8 -*-
 '''
 参考解法
 https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zui-chang-hui-wen-zi-chuan-by-leetcode-solution/

@@ -82,7 +82,7 @@ class Solution:
                 right += 1
             # 字符 在滑动窗口内
             else:
-                # 去除重复
+                # 去除重复：left移动到第一个重复元素右边
                 left += s[left:right].index(val) + 1
                 # 拓展
                 right += 1
@@ -91,10 +91,26 @@ class Solution:
 
         return max_len
 
+    def lengthOfLongestSubstring_v3(self, s):
+        if len(s) <= 1: return len(s)
+        left, right = 0, 0
+        max_len = -1
+
+        for idx, val in enumerate(s):
+            if val not in s[left:right]:
+                right += 1
+            else:
+                left += s[left:right].index(val) + 1
+                right += 1
+
+            max_len = max(max_len, right - left)
+
+        return max_len
+
 
 s = Solution()
-print(s.lengthOfLongestSubstring_v1('abcabcbb'))
-print(s.lengthOfLongestSubstring_v1('pwwkew'))
+print(s.lengthOfLongestSubstring_v3('abcabcbb'))
+print(s.lengthOfLongestSubstring_v3('pwwkew'))
 
 print('*' * 20)
 

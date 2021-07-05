@@ -38,23 +38,6 @@ class Solution:
         return ans
 
 
-def level_order(root):
-    if not root: return []
-
-    nodes = []
-    nodes.append(root)
-    ans = []
-
-    while nodes:
-        node = nodes.pop(0)
-        ans.append(node.val)
-
-        if not node.left:
-            nodes.append(node.left)
-        if not node.right:
-            nodes.append(node.right)
-
-    return ans
 
 
 def level_order_list(root):

@@ -53,3 +53,39 @@ def reverseBetween(head, left, right):
     left_node.next = curr
 
     return dummy_node.next
+
+
+def reverseBetween_v2(head, left, right):
+    if not head: return head
+
+    dummy = pre = ListNode(-1)
+    dummy.next = head
+
+    for _ in range(left - 1):
+        pre = pre.next
+
+    right_node = pre
+    for _ in range(right - left + 1):
+        right_node = right_node.next
+
+    left_node = pre.next
+    curr = right_node.next
+
+    pre.next = None
+    right_node.next = None
+
+    def reverse(root):
+        pre = None
+        cur = root
+        while cur:
+            cur_next = cur.next
+            cur.next = pre
+
+            pre = cur
+            cur = cur_next
+
+    reverse(left_node)
+    pre.next = right_node
+    left_node.next = curr
+
+    return dummy.next

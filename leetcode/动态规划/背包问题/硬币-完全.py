@@ -56,3 +56,40 @@ def coinChange_space_optimize(coins, amount):
 coins = [1, 2, 5]
 amount = 11
 print(coinChange_space_optimize(coins, amount))
+
+
+def coinChange_v2(coins, amount):
+    if not coins or amount < 0: return -1
+
+    coins_num = len(coins)
+    # dp[i][j]为考虑第i。。。。
+    dp = [[amount + 1] * (amount + 1) for _ in range(coins_num + 1)]
+    for i in range(coins_num + 1):
+        dp[i][0] = 0
+
+    for i in range(1, coins_num + 1):
+        for j in range(1, amount + 1):
+            if j < coins[i - 1]:
+                dp[i][j] = dp[i - 1][j]
+            else:
+                dp[i][j] = min(dp[i - 1][j], dp[i][j - coins[i - 1]] + 1)
+
+    return dp[-1][-1] if dp[-1][-1] != amount + 1 else -1
+
+
+def coinChange_space_optimize_v2(coins, amount):
+    if not coins or amount < 0: return -1
+    dp = [amount + 1] * (amount + 1)
+    dp[0] = 0
+
+    for i in range(len(coins)):
+        for j in range(coins[i], amount + 1):
+            dp[j] = min(dp[j], dp[j - coins[i]] + 1)
+
+    return dp[-1] if dp[-1] != amount + 1 else -1
+
+
+coins = [1, 2, 5]
+amount = 11
+print(coinChange_v2(coins, amount))
+print(coinChange_space_optimize_v2(coins, amount))

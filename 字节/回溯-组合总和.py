@@ -50,6 +50,22 @@ def combinationSum_v2(candidates, target):
     return ans
 
 
+def combinationSum_v2(candidates, target):
+    if not candidates:return []
+
+    ans,track=[],[]
+
+    def trackback(candi,track,residue,start):
+        if residue<0:return
+        if residue==0:
+            ans.append(track[:])
+            return
+
+        for i in range(start,len(candidates)-1):
+            if candidates[i]>residue:break
+            track.append
+
+
 candidates = [2, 3, 6, 7]
 target = 7
 print(combinationSum_v2(candidates, target))

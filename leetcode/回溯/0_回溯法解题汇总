@@ -7,9 +7,11 @@ def backtrack(新区域, res, path):
         return
     for 选择 in 新区域:
         if 符合要求:
-            path.add(当前选择)
-            backtrack(新区域, res, path)
-            path.pop()
+            处理节点;
+            backtracking(路径，选择列表); // 递归
+            回溯，撤销处理结果
 
 二、回溯算法入门级详解 + 练习
 https://leetcode-cn.com/problems/permutations/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liweiw/
+
+https://leetcode-cn.com/problems/n-queens/solution/dai-ma-sui-xiang-lu-51-n-queenshui-su-fa-2k32/
