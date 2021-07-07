@@ -17,24 +17,23 @@ def divide(dividend, divisor):
     dividend = abs(dividend)
     divisor = abs(divisor)
     result = 0
-    count=0
+    count = 0
 
     # *1 *2 *4 *8，一直到比被除数大
-    while dividend>=divisor:
-        count +=1
-        divisor = divisor<<1
+    while dividend >= divisor:
+        count += 1
+        divisor = divisor << 1
 
-    while count>0:
-        count-=1
-        divisor=divisor>>1   #先减半
+    while count > 0:
+        count -= 1
+        divisor = divisor >> 1  # 先减半
 
-        while dividend>=divisor:
-            result +=1<<count
-            dividend-=divisor      # 4+2+..（8>4+2+1） 越加越少，并且保证差值至少是除数的一倍
+        while dividend >= divisor:
+            result += 1 << count
+            dividend -= divisor  # 4+2+..（8>4+2+1） 越加越少，并且保证差值至少是除数的一倍
 
-    if flag:result=-result
+    if flag: result = -result
     if -a <= result <= a - 1:
         return result
     else:
         return a - 1
-

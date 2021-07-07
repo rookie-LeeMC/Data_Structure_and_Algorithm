@@ -1,6 +1,6 @@
 # -*- coding:UTF-8 -*-
 '''
-kadane：求单区间 最大子序列和
+kadane：求单区间 最大序列问题
 '''
 def maxSubArray(nums):
     # 特例

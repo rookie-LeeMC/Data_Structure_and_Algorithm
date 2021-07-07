@@ -52,5 +52,27 @@ def searchRange(nums, target):
 
 
 nums = [5, 7, 7, 8, 8, 10]
-target = 8
+target = 6
 print(searchRange(nums, target))
+
+
+def searchRange_v2(nums, target):
+    def find_right_bound(nums, target):
+        left, right = 0, len(nums) - 1
+        while left <= right:
+            mid = left + (right - left) // 2
+            if nums[mid] > target:
+                right = mid - 1
+            elif nums[mid] < target:
+                left = mid + 1
+            elif nums[mid] == target:
+                left = mid + 1
+        if right < 0 or nums[right] != target: return -1
+        return right
+
+    return [find_right_bound(nums, target - 1), find_right_bound(nums, target)]
+
+
+nums = [5, 7, 7, 8, 8, 10]
+target = 6
+print(searchRange_v2(nums, target))
