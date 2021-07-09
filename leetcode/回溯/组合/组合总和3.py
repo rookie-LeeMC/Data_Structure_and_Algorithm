@@ -5,7 +5,7 @@ https://leetcode-cn.com/problems/combination-sum-iii/
 '''
 
 
-def combinationSum3(k, n):
+def combinationSum(k, n):
     if n < 1 or k <= 0: return []
 
     ans = []
@@ -33,7 +33,27 @@ def combinationSum3(k, n):
     return ans
 
 
+def combinationSum3(k, n):
+    if not k or not n: return []
+
+    res, track = [], []
+
+    def trackback(nums, start, track):
+        if len(track) > k or sum(track) > n: return
+        if len(track) == k and sum(track) == n:
+            res.append(track[:])
+            return
+
+        for i in range(start, len(nums)):
+            track.append(nums[i])
+            trackback(nums, i + 1, track)
+            track.pop()
+
+    trackback([i + 1 for i in range(9)], 0, track)
+    return res
+
+
 k = 3
-n = 7
+n = 9
 print(combinationSum3(k, n))
-# 输出: [[1, 2, 4]]
+# 输出: [[1,2,6], [1,3,5], [2,3,4]]

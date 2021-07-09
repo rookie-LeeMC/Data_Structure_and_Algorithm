@@ -51,18 +51,18 @@ def combinationSum_v2(candidates, target):
 
 
 def combinationSum_v2(candidates, target):
-    if not candidates:return []
+    if not candidates: return []
 
-    ans,track=[],[]
+    ans, track = [], []
 
-    def trackback(candi,track,residue,start):
-        if residue<0:return
-        if residue==0:
+    def trackback(candi, track, residue, start):
+        if residue < 0: return
+        if residue == 0:
             ans.append(track[:])
             return
 
-        for i in range(start,len(candidates)-1):
-            if candidates[i]>residue:break
+        for i in range(start, len(candidates) - 1):
+            if candidates[i] > residue: break
             track.append
 
 

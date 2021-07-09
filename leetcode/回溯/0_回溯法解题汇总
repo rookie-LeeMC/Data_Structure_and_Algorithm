@@ -14,4 +14,5 @@ def backtrack(新区域, res, path):
 二、回溯算法入门级详解 + 练习
 https://leetcode-cn.com/problems/permutations/solution/hui-su-suan-fa-python-dai-ma-java-dai-ma-by-liweiw/
 
+回溯问题汇总和详解
 https://leetcode-cn.com/problems/n-queens/solution/dai-ma-sui-xiang-lu-51-n-queenshui-su-fa-2k32/
