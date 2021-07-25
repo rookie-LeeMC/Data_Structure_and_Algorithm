@@ -89,3 +89,36 @@ print(nums)
 nums = [3, 7, 8, 3, 5, 2, 4, 8, 6, 4, 2, 9, 7]
 quick_sort_stack(nums)
 print(nums)
+
+
+def partitions_yb(nums, left, right):
+    # i, j = left, right
+    #
+    # while i < j:
+    #     while i < j and nums[j] >= nums[left]: j -= 1
+    #     while i < j and nums[i] <= nums[left]: i += 1
+    #     nums[i], nums[j] = nums[j], nums[i]
+    # nums[i], nums[left] = nums[left], nums[i]
+    # return i
+
+    base = nums[left]
+    while left < right:
+        while left < right and nums[right] >= base: right -= 1
+        nums[left] = nums[right]
+        while left < right and nums[left] <= base: left += 1
+        nums[right] = nums[left]
+
+    nums[left] = base
+    return left
+
+
+def quick_sort_yb(nums, left, right):
+    if left < right:
+        mid = partitions_yb(nums, left, right)
+        quick_sort_yb(nums, left, mid - 1)
+        quick_sort_yb(nums, mid + 1, right)
+
+
+nums = [3, 7, 8, 3, 5, 2, 4, 8, 6, 4, 2, 9, 7]
+quick_sort_yb(nums, 0, len(nums) - 1)
+print(nums)

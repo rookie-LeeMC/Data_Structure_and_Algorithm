@@ -1,5 +1,40 @@
 # -*- coding:UTF-8 -*-
-def lengthOfLIS(nums) -> int:
+
+'''
+方法1：https://blog.csdn.net/qq_41765114/article/details/88415541
+https://zhuanlan.zhihu.com/p/143558992
+一、定义状态
+dp[i]表示以a[i]结尾的最长递增子序列的长度
+
+二、初始化定义
+
+三、状态递归
+dp[i] = max(dp[j])+1   dp[i]>dp[j]
+else:   dp[i]=1
+
+四、返回最大值
+'''
+
+
+# 动态规划
+def lengthOfLIS(nums):
+    n = len(nums)
+    if n == 0 or n == 1: return n
+
+    dp = [1] * n
+
+    for i in range(1, n):
+        for j in range(i):
+            # 当前的和之前的逐个比较
+            # print i,j
+            if nums[i] > nums[j]:
+                dp[i] = max(dp[i], dp[j] + 1)
+
+    return max(dp)
+
+
+# 二分查找
+def lengthOfLIS_v2(nums) -> int:
     size = len(nums)
     # 特判
     if size < 2:
@@ -32,26 +67,8 @@ def lengthOfLIS(nums) -> int:
     return len(tail)
 
 
-def lengthOfLIS_v2(nums):
-    size = len(nums)
-    if size < 2: return size
-
-    tail = []
-    tail.append(nums[0])
-    for i in range(1, size):
-        if nums[i] > tail[-1]:
-            tail.append(nums[i])
-            continue
-
-        # 找到第一个大于等于nums[i]的数，并使其更小
-        left, right = 0, len(tail) - 1
-
-        while left <= right:
-            mid = left + (right - left) // 2
-            if tail[mid] < nums[i]:
-                left = mid + 1
-            else:
-                right = mid
-        tail[left] = nums[i]
-
-    return len(tail)
+nums = [10, 9, 2, 5, 3, 7, 101, 18]
+print(lengthOfLIS(nums))
+print(lengthOfLIS([7, 7, 7, 7, 7, 7, 7]))
+print(lengthOfLIS_v2(nums))
+print(lengthOfLIS_v2([7, 7, 7, 7, 7, 7, 7]))

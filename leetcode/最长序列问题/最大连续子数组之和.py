@@ -1,7 +1,9 @@
 # -*- coding:UTF-8 -*-
 '''
-kadane：求单区间 最大序列问题
+kadane：求单区间 最长序列问题
 '''
+
+
 def maxSubArray(nums):
     # 特例
     if len(nums) == 0 or len(nums) == 1: return sum(nums)

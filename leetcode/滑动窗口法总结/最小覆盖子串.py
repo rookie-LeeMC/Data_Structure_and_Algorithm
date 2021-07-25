@@ -12,7 +12,7 @@ T = "ABC"
 import collections
 
 # 相当于两个计数器
-needs = collections.Counter(T)
+b = collections.Counter(T)
 window = {}
 print(needs)
 

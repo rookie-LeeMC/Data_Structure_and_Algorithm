@@ -32,7 +32,7 @@ def lengthOfLIS(nums):
 
     return max(dp)
 
-
+# 二分查找
 def lengthOfLIS(nums) -> int:
     size = len(nums)
     # 特判

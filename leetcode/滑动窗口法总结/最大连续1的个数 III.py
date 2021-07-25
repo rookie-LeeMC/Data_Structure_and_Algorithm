@@ -52,7 +52,7 @@ def longestOnes(A, K):
 
 A = [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0]
 K = 2
-print longestOnes(A, K)
+print(longestOnes(A, K))
 A = [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1]
 K = 3
-print longestOnes(A, K)
+print(longestOnes(A, K))
